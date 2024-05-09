@@ -16,48 +16,48 @@
         <!-- //etiqueta para conteneer la seccion izquierda -->
         <aside>
             <header>
-                <img id="Logo" src="img/QuieroMates-removebg-preview.png" >
+                <h1 class="logo-titulo">Quiero Mates</h1>
             </header>
             <nav>
                 <ul>
                     <li>
-                        <a class="boton-menu boton-volver" href="./index.html">
-                            <i class="bi bi-arrow-left-circle-fill"></i> seguir comprando
+                        <a class="boton-menu boton-volver icono-negro" href="./index.html">
+                            <i class="bi bi-arrow-left-circle-fill icono-negro"></i> seguir comprando
                         </a>
                     </li>
 
                     <li>
-                        <!-- active a boton carrito -->
                         <a class="boton-menu boton-carrito active" href="./carrito.html">
                             <i class="bi bi-cart4"></i>Carrito <span class="numero"></a>
                     </li>
                 </ul>
             </nav>
             <footer>
-                <div>
+                <div class="divRedesSociales">
                     <p class="titulo-redes">Redes Sociales</p>
                     <ul class="ulFooter">
-                        <li><a href="https://www.facebook.com/Meta" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <li><a href="https://www.facebook.com/Meta" target="_blank"><i class="bi bi-facebook icono-negro"></i></a>
                         </li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram icono-negro"></i>
                         </li>
-                        <li><a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                        <li><a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter-x icono-negro"></i></a>
                         </li>
                     </ul>
                 </div>
-
             </footer>
         </aside>
         <!-- //etuiqueta para contener la seccion derecha -->
         <main>
+            <a href="./index.html"><i class="bi bi-arrow-left-circle bi-3x icono-negro"></i></a>
             <h2 class="titulo-pricipal">CARRITO</h2>
 
-            <div class="contenedor-carrito">
+            <div class="contenedor-carrito container">
 
                 <p id="carrito-vacio" class="carrito-vacio">Tu carrito esta vacio.<i class="bi bi-cart-x"></i></p>
                 <!-- clase disable para desabilitar y que no se vea -->
                 <div id="carrito-productos" class="carrito-productos disabled">
-                  
+                    <!-- esto se rellena con js -->
+                 
                 </div>
 
 
@@ -65,10 +65,11 @@
                     <div class="carrito-acciones-izquierda">
                         <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">vaciar Carrito</button>
                     </div>
+
                     <div class="carrito-acciones-derecha">
                         <div class="carrito-acciones-total">
                             <P>Total:</P>
-                            <p id="total">$8.500</p>
+                            <p id="total">$6.500</p>
                         </div>
                         <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Terminar Compra</button>
                     </div>
@@ -81,6 +82,8 @@
 
     </div>
 
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/carrito.js"></script>
 </body>
 

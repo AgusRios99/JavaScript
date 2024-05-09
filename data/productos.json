@@ -1,0 +1,126 @@
+[
+   
+    {
+        "id": "Mate Rustico",
+        "titulo": "Mate Rustico",
+        "imagen": "../img/mate rustico.jpg",
+        "categoria": {
+            "nombre": "Mates",
+            "id": "Mates"
+        },
+        "precio": 2500
+    },
+    {
+        "id": "Mate Pampa",
+        "titulo": "Mate Pampa",
+        "imagen": "./img/mate-pampa-verde.jpg",
+        "categoria": {
+            "nombre": "Mates",
+            "id": "Mates"
+        },
+        "precio": 2900
+    },
+    {
+        "id": "Mate Listo",
+        "titulo": "Mate Listo",
+        "imagen": "./img/Matelisto.jpg",
+        "categoria": {
+            "nombre": "Mates",
+            "id": "Mates"
+        },
+        "precio": 2500
+    },
+    {
+        "id": "Mate de Calabaza",
+        "titulo": "Mate de Calabaza",
+        "imagen": "./img/mate-calabaza.jpg",
+        "categoria": {
+            "nombre": "Mates",
+            "id": "Mates"
+        },
+        "precio": 2500
+    },
+    
+    {
+        "id": "Bombilla",
+        "titulo": "Bombilla",
+        "imagen": "./img/bombilla.jpg",
+        "categoria": {
+            "nombre": "Bombillas",
+            "id": "Bombillas"
+        },
+        "precio": 2000
+    },
+    {
+        "id": "Bombilla Plana",
+        "titulo": "Bombilla Plana",
+        "imagen": "./img/Bombillaplana.jpg",
+        "categoria": {
+            "nombre": "Bombillas",
+            "id": "Bombillas"
+        },
+        "precio": 2000
+    },
+    {
+        "id": "Bombilla Rosamonte",
+        "titulo": "Bombilla Rosamonte",
+        "imagen": "./img/BombillaRosamonte.jpg",
+        "categoria": {
+            "nombre": "Bombillas",
+            "id": "Bombillas"
+        },
+        "precio": 2500
+    },
+    
+    {
+        "id": "Termo Taragui",
+        "titulo": "Termo Taragui",
+        "imagen": "./img/TaraguiTermo.jpg",
+        "categoria": {
+            "nombre": "Termos",
+            "id": "Termos"
+        },
+        "precio": 5500
+    },
+    {
+        "id": "Termo Boca",
+        "titulo": "Termo Boca",
+        "imagen": "./img/TermoBoca.jpg",
+        "categoria": {
+            "nombre": "Termos",
+            "id": "Termos"
+        },
+        "precio": 4500
+    },
+    {
+        "id": "Termo Cooleman",
+        "titulo": "Termo Cooleman",
+        "imagen": "./img/Termocoleman.jpg",
+        "categoria": {
+            "nombre": "Termos",
+            "id": "Termos"
+        },
+        "precio": 4500
+    },
+    {
+        "id": "Termo Stanley",
+        "titulo": "Termo Stanley",
+        "imagen": "./img/TermoStanley.jpg",
+        "categoria": {
+            "nombre": "Termos",
+            "id": "Termos"
+        },
+        "precio": 2500
+    },
+    
+    {
+        "id": "Bombilla Campeon",
+        "titulo": "Bombilla Campeon",
+        "imagen": "./img/BombillaCampeon.jpg",
+        "categoria": {
+            "nombre": "Bombillas",
+            "id": "Bombillas"
+        },
+        "precio": 3000
+    }
+]

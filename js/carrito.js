@@ -1,4 +1,4 @@
-// llamo al array desde el localStorage
+
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
@@ -11,22 +11,24 @@ const botonComprar = document.querySelector("#carrito-acciones-comprar");
 const contenedorTotal = document.querySelector("#total")
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 
-function cargarProductosCArrito () {
 
-if (productosEnCarrito && productosEnCarrito.length > 0) {
 
-    contenedorCarritoVacio.classList.add("disabled");
-    contenedorProductos.classList.remove("disabled");
-    contenedorCarritoAcciones.classList.remove("disabled");
-    contenedorCarritoComprado.classList.add("disabled");
+function cargarProductosCArrito() {
 
-    contenedorProductos.innerHTML = "";
+    if (productosEnCarrito && productosEnCarrito.length > 0) {
 
-    productosEnCarrito.forEach(producto => {
+        contenedorCarritoVacio.classList.add("disabled");
+        contenedorProductos.classList.remove("disabled");
+        contenedorCarritoAcciones.classList.remove("disabled");
+        contenedorCarritoComprado.classList.add("disabled");
 
-        const div = document.createElement("div");
-        div.classList.add("carrito-producto");
-        div.innerHTML = `
+        contenedorProductos.innerHTML = "";
+
+        productosEnCarrito.forEach(producto => {
+
+            const div = document.createElement("div");
+            div.classList.add("carrito-producto");
+            div.innerHTML = `
         <img class="imagen-producto-carrito" src="${producto.imagen}" alt="${producto.titulo}">
         <div class="carrito-prodcuto-titulo">
             <small>Titulo</small>
@@ -44,25 +46,49 @@ if (productosEnCarrito && productosEnCarrito.length > 0) {
             <small>Subtotal</small>
             <p>${producto.precio * producto.cantidad}</p>
         </div>
+        <button class="carrito-producto-reducir" id="restar-${producto.id}"><i class="bi bi-dash"></i></button>
+        <button class="carrito-producto-aumentar" id="sumar-${producto.id}"><i class="bi bi-plus"></i></button>
         <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash"></i></button>
         `;
 
-        contenedorProductos.append(div);
-    })
-} else {
+            contenedorProductos.append(div);
+
+            const botonReducir = div.querySelector(`#restar-${producto.id}`);
+            botonReducir.addEventListener("click", () => reducirCantidad(producto.id));
+
+            const botonAumentar = div.querySelector(`#sumar-${producto.id}`);
+            botonAumentar.addEventListener("click", () => aumentarCantidad(producto.id));
+        })
+    } else {
 
 
-    contenedorCarritoVacio.classList.remove("disabled");
-    contenedorProductos.classList.add("disabled");
-    contenedorCarritoAcciones.classList.add("disabled");
-    contenedorCarritoComprado.classList.add("disabled");
+        contenedorCarritoVacio.classList.remove("disabled");
+        contenedorProductos.classList.add("disabled");
+        contenedorCarritoAcciones.classList.add("disabled");
+        contenedorCarritoComprado.classList.add("disabled");
 
+    }
+    actualizarBotonesEliminar();
+    actualizarTotal();
 }
-actualizarBotonesEliminar();
-actualizarTotal();
+
+cargarProductosCArrito();
+
+function reducirCantidad(id) {
+    const index = productosEnCarrito.findIndex(producto => producto.id === id);
+    if (productosEnCarrito[index].cantidad > 1) {
+        productosEnCarrito[index].cantidad--;
+    }
+    cargarProductosCArrito();
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-cargarProductosCArrito ();
+function aumentarCantidad(id) {
+    const index = productosEnCarrito.findIndex(producto => producto.id === id);
+    productosEnCarrito[index].cantidad++;
+    cargarProductosCArrito();
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+}
 
 // para el boton mas pequeño de eliminar
 function actualizarBotonesEliminar() {
@@ -73,23 +99,44 @@ function actualizarBotonesEliminar() {
     });
 }
 
-function eliminarDelCArrito (e) {
+function eliminarDelCArrito(e) {
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
 
     productosEnCarrito.splice(index, 1);
-    cargarProductosCArrito ();
+    cargarProductosCArrito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-// para el boton principal de eliminar
-botonVaciar.addEventListener("click", vaciarCarrito);
+// Notificacion Vaciar carrito
+botonVaciar.addEventListener("click", () => {
+    Swal.fire({
+        title: "Estas seguro que queres vaciar el carrito?",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Aceptar",
+        denyButtonText: `Cancelar`
+    }).then((result) => {
 
-function vaciarCarrito () {
+        if (result.isConfirmed) {
+            function vaciarCarrito() {
+                productosEnCarrito.length = 0;
+                localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+                cargarProductosCArrito();
+            }
+            vaciarCarrito()
+        } else if (result.isDenied) {
+
+        }
+    });
+})
+
+
+function vaciarCarrito() {
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCArrito ();
+    cargarProductosCArrito();
 }
 
 // actualizar la suma total
@@ -98,10 +145,21 @@ function actualizarTotal() {
     contenedorTotal.innerText = `$${totalCalculado}`;
 }
 
-botonComprar.addEventListener("click", ComprarCarrito);
+//Boton comprar
 
-// darle una funcion al boton comprar
-function ComprarCarrito () {
+
+botonComprar.addEventListener("click", () => {
+    ComprarCarrito()
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Compra Finalizada con Exito",
+        showConfirmButton: false,
+        timer: 1500
+      });
+})
+
+function ComprarCarrito() {
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
@@ -110,3 +168,4 @@ function ComprarCarrito () {
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 }
+

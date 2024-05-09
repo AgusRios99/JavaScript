@@ -1,156 +1,32 @@
-//Calcula todas la opciones de cuotas disponibles y escribir salir te dira cuanto termianl devolviendo en cada plan
-/*
-const simuladorDePrestamos = [];
+let productos = []
 
-let montoIngresado;
-let cuotaIngresada;
-let continuarSimulando;
-
-//ciclo para que solo permita salir si escribo lapalabra salir
-do {
-    //ciclo con alert para que no ingrese otra cosa que no sea un numero.
-    do {
-        montoIngresado = parseInt(prompt("ingrese el monto que desea solicitar"));
-    } while (isNaN(montoIngresado));
-
-    //ciclo para que no ingrese otra cosa que no sea el plan de cuota mencionado.
-    do {
-        cuotaIngresada = parseInt(prompt("ingrese si lo requiere en 12, 24, 36 o 48 cuotas"));
-        if (cuotaIngresada !== 12 && cuotaIngresada !== 24 && cuotaIngresada !== 36 && cuotaIngresada !== 48) {
-            alert("Plan de cuotas exedido ")
-        }
-    } while (cuotaIngresada !== 12 && cuotaIngresada !== 24 && cuotaIngresada !== 36 && cuotaIngresada !== 48);
-
-
-    // obejto con numero de cuotas y valores de las mismas.
-
-    const cuotasMultiplicadores = {
-        12: 0.2,
-        24: 0.3,
-        36: 0.6,
-        48: 0.9
-    };
-
-    //funcion para realizar el calculo
-
-    const calcular = (monto, cuota) => {
-        let multiplicador = 0;
-
-        if (cuotasMultiplicadores[cuota]) {
-            multiplicador = cuotasMultiplicadores[cuota];
-        }
-
-        return monto * multiplicador * cuota;
-    };
-
-    let resultado = calcular(montoIngresado, cuotaIngresada);
-
-    //creo un objeto para cada  simulacion.
-
-    let prestamoSimulado = {
-        monto: montoIngresado,
-        cuota: cuotaIngresada,
-        devolves: resultado
-    };
-
-    simuladorDePrestamos.push(prestamoSimulado);
-
-    
-    continuarSimulando = prompt("Escriba SALIR para terminar de simular y ver el RESULTADO de lo contrario presione ACEPTAR.").toLowerCase();
-
-} while (continuarSimulando !== 'salir');
-
-//mostrar resultado de todo lo simulado
-
-simuladorDePrestamos.forEach((opcion1) => {
-    console.log(opcion1);
-})
-
-*/// ctrl+} = Comment
-
-/*array de productos*/
-const productos = [
-    /*categorias Mates*/
-    {
-        id: "Mate",
-        titulo: "Mate",
-        imagen:"../img/mate camionero.jpeg",
-        categoria: {
-            nombre: "Mates",
-            id: "Camionero"
-        },
-        precio: 4500
-    },
-    {
-        id: "MateClasico",
-        titulo: "MateClasico",
-        imagen: "../img/mate rustico.jpg",
-        categoria: {
-            nombre: "Mates",
-            id: "Clasico"
-        },
-        precio: 2500
-    },
-   
-    // categorias bombillas
-    {
-        id: "Bombilla",
-        titulo: "Bombilla",
-        imagen: "../img/bombilla.jpg",
-        categoria: {
-            nombre: "Bombillas",
-            id: "Bombillas"
-        },
-        precio: 1000
-    },
-    {
-        id: "BombillaPico",
-        titulo: "PicoDeLoro",
-        imagen: "../img/pico de loro.jpg",
-        categoria: {
-            nombre: "Bombillas",
-            id: "Bombillas"
-        },
-        precio: 2000
-    },
-    /*categorias Termos*/
-    {
-        id: "Termo",
-        titulo: "Stanley",
-        imagen: "../img/TermoStanley.jpg",
-        categoria: {
-            nombre: "Termos",
-            id: "TermosStanley"
-        },
-        precio: 8000
-    },
-    {
-        id: "CoolemanTermo",
-        titulo: "Cooleman",
-        imagen: "../img/Termocoleman.jpg",
-        categoria: {
-            nombre: "Termos",
-            id: "TermosCooleman"
-        },
-        precio: 6500
-    },
-   
-]
+fetch("data/productos.json")
+    .then(res => res.json())
+    .then(data => {
+        productos = data
+        cargarProdcutos(productos);
+    })
 
 const contenedorProdcutos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categorias");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const input = document.querySelector("#input");
 const numero = document.querySelector("#numero");
+const btnIngresar = document.querySelector("#btn-ingresar");
+let numeroNav = document.getElementById("numeroNav");
+let numeroSidebar = document.getElementById("numeroAside");
+let inputPC = document.getElementById("inputPC");
+let inputTa = document.getElementById("inputTa");
 
-//funcion para cargar prodcutos al div
+
 function cargarProdcutos(CategoriaElegida) {
 
     contenedorProdcutos.innerHTML = "";
 
     CategoriaElegida.forEach(productos => {
         const div = document.createElement("div");
-        //al div le damos la class para que tenga la misma clase creada en el html
+
         div.classList.add("prodcuto-card");
 
         div.innerHTML = `
@@ -160,17 +36,20 @@ function cargarProdcutos(CategoriaElegida) {
             <p class="producto-precio">$${productos.precio}</p>
             <button class="producto-agregar" id=${productos.id}>Agregar</button>
         </div>
+
         `;
 
         contenedorProdcutos.append(div);
     })
+
     actualizarBotonesAgregar();
 }
 
+cargarProdcutos(productos);
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
-        //lo hago un condicional para que no quede el home vacio, y digo si es diferente al home  y sino que haga un array de cargar todos con "la funcion cargar prodcutos(productos)"
+        //para que no quede el home vacio
         if (e.currentTarget.id != "Home") {
 
             const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id)
@@ -181,7 +60,7 @@ botonesCategorias.forEach(boton => {
         } else {
 
             tituloPrincipal.innerText = "Home";
-            //llamo a la funcion que muestra todos los productos
+
             cargarProdcutos(productos);
         }
 
@@ -208,6 +87,8 @@ if (productosEnCarritoLS) {
 
     productosEnCarrito = [];
 }
+
+
 function agregarAlCArrito(e) {
 
     const idBoton = e.currentTarget.id;
@@ -223,10 +104,65 @@ function agregarAlCArrito(e) {
     actualizarnumero();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+    // Mostrar agregar al carrito notificación de Toastify
+    Toastify({
+        text: "Producto agregado al carrito",
+        duration: 3000
+    }).showToast();
 }
 
 
 function actualizarnumero() {
+    let numeroNav = document.getElementById("numeroNav");
+    let numeroSidebar = document.getElementById("numeroAside");
+
     let nuevoNumero = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numero.innerText = nuevoNumero;
+
+    numeroNav.innerText = nuevoNumero;
+    numeroSidebar.innerText = nuevoNumero;
 }
+
+// Notificacion boton ingresar
+btnIngresar.addEventListener("click", async () => {
+    const { value: email } = await Swal.fire({
+        title: "Ingresa tu correo electronico para una mejor experiencia",
+        icon: "info",
+        input: "email",
+        inputLabel: "Su direccion de correo electronico",
+        inputPlaceholder: "Ingrese su cuenta"
+    });
+    if (email) {
+        Swal.fire(`Entered email: ${email}`);
+    }
+})
+
+// funcion barra de busqueda
+
+inputPC.addEventListener("input", Busqueda);
+inputTa.addEventListener("input", Busqueda);
+
+function Busqueda() {
+    const terminoBusqueda = inputPC.value.toLowerCase() || inputTa.value.toLowerCase();
+    const productosFiltrados = productos.filter(producto => {
+        return producto.titulo.toLowerCase().includes(terminoBusqueda);
+    });
+    cargarProdcutos(productosFiltrados);
+}
+
+// Medias
+window.addEventListener('resize', function () {
+    var screenWidth = window.innerWidth;
+    var visionComputadora = document.querySelector('.vision-computadora');
+    var header = document.querySelector('header');
+
+    if (screenWidth <= 1024) {
+        visionComputadora.style.display = 'block';
+        header.style.display = 'none';
+    } else {
+        visionComputadora.style.display = 'none';
+        header.style.display = 'block';
+    }
+});
+
+window.dispatchEvent(new Event('resize'));
