@@ -49,7 +49,7 @@ cargarProdcutos(productos);
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
-        //para que no quede el home vacio
+        //No queda el home vacio
         if (e.currentTarget.id != "Home") {
 
             const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id)
@@ -75,7 +75,7 @@ function actualizarBotonesAgregar() {
         boton.addEventListener("click", agregarAlCArrito);
     });
 }
-// para que cuando se recargue la pagina no se vuleva a cero el carrito
+// LocalStorage
 let productosEnCarrito;
 let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
 

@@ -90,7 +90,7 @@ function aumentarCantidad(id) {
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-// para el boton mas pequeño de eliminar
+//Boton mas pequeño de eliminar
 function actualizarBotonesEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 
@@ -139,7 +139,7 @@ function vaciarCarrito() {
     cargarProductosCArrito();
 }
 
-// actualizar la suma total
+// Actualizar la suma total
 function actualizarTotal() {
     const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
     contenedorTotal.innerText = `$${totalCalculado}`;
@@ -168,4 +168,3 @@ function ComprarCarrito() {
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 }
-

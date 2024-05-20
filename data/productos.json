@@ -1,7 +1,7 @@
 [
    
     {
-        "id": "Mate Rustico",
+        "id": "MateRustico",
         "titulo": "Mate Rustico",
         "imagen": "../img/mate rustico.jpg",
         "categoria": {
@@ -11,7 +11,7 @@
         "precio": 2500
     },
     {
-        "id": "Mate Pampa",
+        "id": "MatePampa",
         "titulo": "Mate Pampa",
         "imagen": "./img/mate-pampa-verde.jpg",
         "categoria": {
@@ -21,7 +21,7 @@
         "precio": 2900
     },
     {
-        "id": "Mate Listo",
+        "id": "MateListo",
         "titulo": "Mate Listo",
         "imagen": "./img/Matelisto.jpg",
         "categoria": {
@@ -31,7 +31,7 @@
         "precio": 2500
     },
     {
-        "id": "Mate de Calabaza",
+        "id": "MatedeCalabaza",
         "titulo": "Mate de Calabaza",
         "imagen": "./img/mate-calabaza.jpg",
         "categoria": {
@@ -52,7 +52,7 @@
         "precio": 2000
     },
     {
-        "id": "Bombilla Plana",
+        "id": "BombillaPlana",
         "titulo": "Bombilla Plana",
         "imagen": "./img/Bombillaplana.jpg",
         "categoria": {
@@ -62,7 +62,7 @@
         "precio": 2000
     },
     {
-        "id": "Bombilla Rosamonte",
+        "id": "BombillaRosamonte",
         "titulo": "Bombilla Rosamonte",
         "imagen": "./img/BombillaRosamonte.jpg",
         "categoria": {
@@ -73,7 +73,7 @@
     },
     
     {
-        "id": "Termo Taragui",
+        "id": "TermoTaragui",
         "titulo": "Termo Taragui",
         "imagen": "./img/TaraguiTermo.jpg",
         "categoria": {
@@ -83,7 +83,7 @@
         "precio": 5500
     },
     {
-        "id": "Termo Boca",
+        "id": "TermoBoca",
         "titulo": "Termo Boca",
         "imagen": "./img/TermoBoca.jpg",
         "categoria": {
@@ -93,7 +93,7 @@
         "precio": 4500
     },
     {
-        "id": "Termo Cooleman",
+        "id": "TermoCooleman",
         "titulo": "Termo Cooleman",
         "imagen": "./img/Termocoleman.jpg",
         "categoria": {
@@ -103,7 +103,7 @@
         "precio": 4500
     },
     {
-        "id": "Termo Stanley",
+        "id": "TermoStanley",
         "titulo": "Termo Stanley",
         "imagen": "./img/TermoStanley.jpg",
         "categoria": {
@@ -114,7 +114,7 @@
     },
     
     {
-        "id": "Bombilla Campeon",
+        "id": "BombillaCampeon",
         "titulo": "Bombilla Campeon",
         "imagen": "./img/BombillaCampeon.jpg",
         "categoria": {
