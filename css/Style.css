@@ -23,6 +23,7 @@ ul, li, a {
 /* estilo contenedor */
 .wrapper {
     display: grid;
+    text-align: justify;
     grid-template-columns: 1fr 4fr;
     background-color: rgb(82, 172, 214);
 }
@@ -150,27 +151,37 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    object-fit: contain;
+   
 }
 
 /* estilo img de card */
 .producto-imagen {
     width: 100%;
-    height: auto;
+    display: block;
+    height: 300px;
+    padding: 2%;
     border-radius: 1rem;
+    object-fit: cover;
+    
 }
 
 .producto-card {
     display: flex;
+    
 }
 
 .producto-detalles {
     background-color: rgb(82, 172, 214);
     border-radius: 1rem;
-    padding: 0.5rem;
+    margin: auto;
+    padding: 0.4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column ;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    text-align: center;
 
 }
 

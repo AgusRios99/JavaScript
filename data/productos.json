@@ -59,17 +59,17 @@
             "nombre": "Bombillas",
             "id": "Bombillas"
         },
-        "precio": 2000
+        "precio": 2700
     },
     {
         "id": "BombillaRosamonte",
-        "titulo": "Bombilla Rosamonte",
+        "titulo": "Bombilla RS",
         "imagen": "./img/BombillaRosamonte.jpg",
         "categoria": {
             "nombre": "Bombillas",
             "id": "Bombillas"
         },
-        "precio": 2500
+        "precio": 4000
     },
     
     {
